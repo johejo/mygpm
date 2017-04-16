@@ -25,7 +25,7 @@ class D(dict):
 
 #get API
 def ask_for_credentials():
-    
+
     api = Mobileclient()
 
     logged_in = False
@@ -39,7 +39,7 @@ def ask_for_credentials():
             logged_in = api.login(email, password, Mobileclient.FROM_MAC_ADDRESS)
         except:
             print()
-        
+
         attempts += 1
 
     return api
@@ -72,18 +72,18 @@ def search(api):
 
     try:
         stream_url = api.get_stream_url(resultjson.song_hits[0].track.storeId)
-    
+
     except:
         print("search error")
         search(api)
-    
+
     p = vlc.MediaPlayer()
     p.set_mrl(stream_url)
     try:
         p.play()
     except:
         search()
-        
+
     start = time.time()
     while(True):
         print("Play time: {}".format(time.time() - start))
@@ -114,8 +114,8 @@ def musi_simple_info(resultjson):
     artist = resultjson.song_hits[0].track.artist
     title = resultjson.song_hits[0].track.title
     year = resultjson.song_hits[0].track.year
-    print("Tile: {}".format(album))
-    print("Album: {}".format(title))
+    print("Tile: {}".format(title))
+    print("Album: {}".format(album))
     print("Artist: {}".format(artist))
     print("Year: {}".format(year))
     print("Length: {0}m{1}s".format(length//1000//60, length//1000%60))
