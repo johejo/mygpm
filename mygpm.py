@@ -87,7 +87,7 @@ def search(api):
     start = time.time()
     while(True):
         print("Play time: {}".format(time.time() - start))
-        musi_simple_info(resultjson)
+        music_simple_info(resultjson)
         cmd = input('press \'Enter\' to see info\npress \'s\' to stop and exit\npress \'p\' to pause\npress \'r\' to serch other song\n')
         if cmd == 's':
             p.stop()
@@ -107,7 +107,7 @@ def search(api):
             search(api)
 
 #print info
-def musi_simple_info(resultjson):
+def music_simple_info(resultjson):
     print()
     length = int(resultjson.song_hits[0].track.durationMillis)
     album = resultjson.song_hits[0].track.album
